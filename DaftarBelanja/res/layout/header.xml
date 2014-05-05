@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/activity_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_vertical"
+        android:background="#0088cc" >
+
+        <LinearLayout
+            android:id="@+id/header_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:padding="5dp" >
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DaftarBelanja"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textStyle="bold|italic" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/header_custom_title_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/header_custom_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rSchoolToday"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:shadowColor="@color/asm_dark_blue"
+			    android:shadowRadius="5"
+			    android:shadowDx="2"
+			    android:shadowDy="2" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="#005177" >
+
+            <ImageButton
+                android:id="@+id/activity_dashboard_btn_score"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="0.5dp"
+                android:background="@drawable/effect_header_menu"
+                android:src="@drawable/prev_button" 
+                android:visibility="gone" />
+            
+            <ImageButton
+                android:id="@+id/activity_dashboard_btn_home"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/effect_header_menu"
+                android:src="@drawable/prev_button"
+                android:padding="5dp"
+                android:visibility="gone" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="#005177" >
+
+            <SearchView
+                android:id="@+id/header_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0088cc"
+                android:visibility="gone" >
+            </SearchView>
+            
+            <ImageButton
+	            android:id="@+id/header_add"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentTop="true"
+	            android:background="@drawable/effect_header_menu"
+	            android:padding="5dp"
+	            android:src="@drawable/add_button" />
+            
+            <ImageButton
+	            android:id="@+id/header_delete"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentTop="true"
+	            android:background="@drawable/effect_header_menu"
+	            android:padding="5dp"
+	            android:src="@drawable/delete_button"
+	            android:visibility="gone" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

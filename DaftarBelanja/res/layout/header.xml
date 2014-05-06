@@ -118,6 +118,16 @@
 	            android:padding="5dp"
 	            android:src="@drawable/delete_button"
 	            android:visibility="gone" />
+            
+            <ImageButton
+	            android:id="@+id/header_date"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentTop="true"
+	            android:background="@drawable/effect_header_menu"
+	            android:padding="5dp"
+	            android:src="@drawable/calendar_button" />
 
         </LinearLayout>
 

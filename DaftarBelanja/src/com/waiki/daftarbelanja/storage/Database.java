@@ -3,6 +3,7 @@ package com.waiki.daftarbelanja.storage;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.waiki.daftarbelanja.common.Helper;
 import com.waiki.daftarbelanja.obj.ItemObj;
 
 import android.content.Context;
@@ -14,7 +15,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Database {
 	public static final String DATABASE_PATH = "";
 	public static final String DATABASE_NAME = "DaftarBelanjaDB.db";
-	public static final int DATABASE_VERSION = 2;
+	public static final int DATABASE_VERSION = 3;
 
 	private static final String TABLE_ITEMS = "ITEMS";
 
@@ -42,7 +43,7 @@ public class Database {
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE "
 					+ TABLE_ITEMS
-					+ " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, qty NUMBER, price NUMBER)");
+					+ " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, qty NUMBER, price NUMBER, item_date DATETIME)");
 		}
 
 		@Override
@@ -79,11 +80,12 @@ public class Database {
 	public int insertItem(ItemObj itemObj) {
 		db.execSQL("INSERT INTO "
 				+ TABLE_ITEMS
-				+ "(name, qty, price) "
+				+ "(name, qty, price, item_date) "
 				+ " VALUES(\'"
-				+ replaceApostrophe(itemObj.getName()) + "\', '"
-				+ itemObj.getQty() + "', "
-				+ itemObj.getPrice()
+				+ replaceApostrophe(itemObj.getName()) + "\', "
+				+ itemObj.getQty() + ", "
+				+ itemObj.getPrice() + ", '"
+				+ Helper.dateToString(itemObj.getItemDate(), "yyyy-MM-dd") + "'"
 				+ ")");
 		
 		Cursor cursor = db.rawQuery("SELECT last_insert_rowid()", null);
@@ -98,7 +100,8 @@ public class Database {
 				+ TABLE_ITEMS
 				+ " SET name='"+itemObj.getName()+"',"
 				+ " qty="+itemObj.getQty()+","
-				+ " price="+itemObj.getPrice()
+				+ " price="+itemObj.getPrice()+","
+				+ " item_date='"+itemObj.getItemDate()+"'"
 				+ " WHERE id="+itemObj.getId()
 				);
 	}
@@ -113,15 +116,25 @@ public class Database {
 	public ArrayList<ItemObj> getAllItems() {
 		ArrayList<ItemObj> retVal = new ArrayList<ItemObj>();
 		Cursor cursor = db.rawQuery(
-				"SELECT id, name, qty, price FROM "
+				"SELECT id, name, qty, price, item_date FROM "
 						+ TABLE_ITEMS, null);
 		if (cursor.moveToFirst()) {
 			do {
-				retVal.add(new ItemObj(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3)));
+				retVal.add(new ItemObj(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3), Helper.stringToDate(cursor.getString(4), "yyyy-MM-dd")));
 			} while (cursor.moveToNext());
 		}
 		cursor.close();
 		return retVal;
+	}
+	
+	public int getTotalPrice() {
+		Cursor cursor = db.rawQuery(
+				"SELECT SUM(price*qty) FROM "
+						+ TABLE_ITEMS, null);
+		cursor.moveToFirst();
+		int result = cursor.getInt(0);
+		cursor.close();
+		return result;
 	}
 
 	/**

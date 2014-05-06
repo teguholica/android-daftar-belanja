@@ -1,29 +1,42 @@
 package com.waiki.daftarbelanja.obj;
 
+import java.util.Date;
+
 public class ItemObj {
 
 	private int id;
 	private String name;
 	private int qty;
 	private int price;
+	private Date itemDate;
 
-	public ItemObj(String name, int qty, int price) {
+	public ItemObj(String name, int qty, int price, Date itemDate) {
 		super();
 		this.name = name;
 		this.qty = qty;
 		this.price = price;
+		this.itemDate = itemDate;
 	}
 
-	public ItemObj(int id, String name, int qty, int price) {
+	public ItemObj(int id, String name, int qty, int price, Date itemDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.qty = qty;
 		this.price = price;
+		this.itemDate = itemDate;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public Date getItemDate() {
+		return itemDate;
+	}
+
+	public void setItemDate(Date itemDate) {
+		this.itemDate = itemDate;
 	}
 
 	public void setId(int id) {

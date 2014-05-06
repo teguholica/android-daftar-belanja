@@ -3,20 +3,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.waiki.daftarbelanja.MainActivity$PlaceholderFragment" >
-    
+
     <com.waiki.daftarbelanja.common.CustomTitle
         android:id="@+id/fragment_main_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" > 
+        android:layout_height="wrap_content" >
     </com.waiki.daftarbelanja.common.CustomTitle>
+
+    <LinearLayout
+        android:id="@+id/fragment_main_date_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_main_header"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/fragment_main_date_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Medium Text"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/fragment_main_date_separator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - " />
+
+                <TextView
+                    android:id="@+id/fragment_main_date_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium Text"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/fragment_main_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/shadow_gradient_top"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/fragment_main_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/fragment_main_header" >
-
+        android:layout_below="@+id/fragment_main_date_wrapper" >
     </ListView>
+
+    <TextView
+        android:id="@+id/fragment_main_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Tidak ada data"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/asm_grey"
+        android:visibility="gone" />
 
 </RelativeLayout>
